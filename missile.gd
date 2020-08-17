@@ -15,6 +15,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_Missile_body_entered(body: Node) -> void:
 	var new_explosion = explosion_object.instance()
-	new_explosion.global_transform.origin = global_transform.origin
+
 	get_parent().add_child(new_explosion)
+	new_explosion.global_transform.origin = global_transform.origin
 	queue_free()

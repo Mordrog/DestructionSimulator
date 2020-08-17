@@ -2,17 +2,18 @@ tool
 extends RigidBody
 class_name PointMass
 
-onready var brick_material = preload("res://Brick.material")
+onready var brick_material = preload("res://Brick3.material")
 onready var Neighbor = preload("res://Neighbor.gd")
+onready var brick_fractured = preload("res://BrickFractured.tscn")
 
 export(float) var size = 5 setget set_size
+export(bool) var is_static = false setget set_is_static
 
-var stiffness:float = 8000.0
-var medium_damping:float = 30.0
-
-var velocity             := Vector3.ZERO
-var previous_translation := Vector3.ZERO
+var gravity:Vector3 = Vector3(0, -9800*2, 0)
 var force                := Vector3.ZERO
+
+
+var last_linear_velocity = Vector3.ZERO
 
 var neighbors:Array = []
 
@@ -20,6 +21,13 @@ func set_size(new_size):
 	if new_size > 0:
 		size = new_size
 		update_block()
+
+func set_is_static(new_value):
+	is_static = new_value
+	if new_value:
+		mode = RigidBody.MODE_STATIC
+	else:
+		mode = RigidBody.MODE_RIGID
 
 func update_block():
 	var new_cube = CubeMesh.new()
@@ -32,45 +40,14 @@ func update_block():
 	new_box.extents = Vector3(size, size, size)/2
 	$CollisionShape.shape = new_box
 
-func add_neighbor(point_mass):
+func add_neighbor(point_mass, break_length):
 	var resting_length = (point_mass.translation - translation).length()
-	neighbors.append(Neighbor.Neighbor.new(point_mass, resting_length))
+	neighbors.append(Neighbor.Neighbor.new(point_mass, resting_length, break_length))
 
-func _ready():
-	update_block()
-	previous_translation = translation - velocity * get_physics_process_delta_time()
-
-func _process(delta):
+func remove_neighbor(node):
 	for neighbor in neighbors:
-		if not neighbor.node:
+		if neighbor.node == node:
 			neighbors.erase(neighbor)
-
-func get_force():
-	force = Vector3()
-	var remove_neighbors = []
-	for neighbor in neighbors:
-		if neighbor.node:
-			var distance = neighbor.node.translation - translation
-			var difference = distance.length() - neighbor.resting_length
-			var relative_velocity = neighbor.node.velocity - velocity
-			
-			var spring_damping = relative_velocity.project(distance)
-			
-			# use for cloth stretching
-			if difference > 0:
-				# spring stiffness
-				force += stiffness * difference * distance.normalized()
-				# spring damping
-				force += spring_damping * 1
-			
-			if difference > 15:
-				remove_neighbors.append(neighbor)
-
-	for neighbor in remove_neighbors:
-		neighbors.erase(neighbor)
-	
-	# medium damping
-	force -= velocity * medium_damping
 
 func is_node_neighbor(node):
 	for neighbor in neighbors:
@@ -78,18 +55,38 @@ func is_node_neighbor(node):
 			return true
 	return false
 
-func euler( delta ):
-	add_central_force (velocity * delta)
-	velocity += force * delta 
+func _ready():
+	update_block()
 
-func symplectic_euler( delta ):
-	velocity += force * delta
-	add_central_force (velocity * delta)
+func _process(delta):
+	for neighbor in neighbors:
+		if not neighbor.node:
+			neighbors.erase(neighbor)
 
-func verlet( delta ):
-	var new_translation  = 2*translation - previous_translation 
-	new_translation     += force * pow( delta, 2.0 )
+
+func _physics_process(delta: float) -> void:
+	last_linear_velocity = linear_velocity
+	if not Engine.editor_hint and not is_static:
+		var val_force = force
+		val_force += gravity
+		add_central_force(force * pow( delta, 2.0 ))
+
+func shatter(additional_velocity = Vector3.ZERO):
+	var fractured_brick = brick_fractured.instance()
+	get_parent().add_child(fractured_brick)
+	fractured_brick.scale = scale*size/2.5
+	fractured_brick.transform = transform
+	for brick_part in fractured_brick.get_children():
+			brick_part.linear_velocity = linear_velocity + additional_velocity
+				
+	queue_free()
+
+func _on_Brick_body_entered(body: Node) -> void:
+	var impact_force = last_linear_velocity.length()
 	
-	previous_translation = translation
-	add_central_force (force * pow( delta, 2.0 ))
-	velocity          = (translation - previous_translation)/delta
+	if body is RigidBody:
+		impact_force -= body.linear_velocity.length()
+
+	impact_force = abs(impact_force)
+	if impact_force > Global.fracture_impact_force_breakpoint:
+		shatter()
