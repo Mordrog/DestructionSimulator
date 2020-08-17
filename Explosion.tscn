@@ -3,8 +3,7 @@
 [ext_resource path="res://explosion.gd" type="Script" id=1]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 3.0
-height = 3.0
+radius = 2.0
 
 [node name="Explosion" type="Area"]
 gravity_vec = Vector3( 0, 0, 0 )

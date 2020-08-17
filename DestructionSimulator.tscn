@@ -40,8 +40,6 @@ material/0 = null
 shape = SubResource( 3 )
 
 [node name="Building" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
-block_size = 5.0
 structure_dimension = Vector3( 3, 8, 3 )
 
 [node name="Player" type="KinematicBody" parent="."]
@@ -103,7 +101,7 @@ text = "stiffness"
 margin_left = 66.0
 margin_right = 464.0
 margin_bottom = 16.0
-max_value = 300000.0
+max_value = 200000.0
 ticks_on_borders = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="Menu/VBoxContainer"]

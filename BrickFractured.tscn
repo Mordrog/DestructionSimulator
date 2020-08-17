@@ -154,6 +154,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
 [node name="BrickPart1" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.503, 0.332, -0.417 )
+mass = 0.05
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BrickPart1"]
@@ -166,6 +167,7 @@ shape = SubResource( 2 )
 
 [node name="BrickPart2" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.823, -0.705, 0.559 )
+mass = 0.05
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BrickPart2"]
@@ -178,6 +180,7 @@ shape = SubResource( 4 )
 
 [node name="BrickPart3" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.561, 0.295, 0.407 )
+mass = 0.05
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BrickPart3"]
@@ -190,6 +193,7 @@ shape = SubResource( 6 )
 
 [node name="BrickPart4" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.699, -0.54, -0.348 )
+mass = 0.05
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BrickPart4"]
@@ -202,6 +206,7 @@ shape = SubResource( 8 )
 
 [node name="BrickPart5" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.136, -0.233, 0.399 )
+mass = 0.05
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BrickPart5"]
@@ -214,6 +219,7 @@ shape = SubResource( 10 )
 
 [node name="BrickPart6" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462, 0.791, 0.466 )
+mass = 0.05
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BrickPart6"]
@@ -226,6 +232,7 @@ shape = SubResource( 12 )
 
 [node name="BrickPart7" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017, -0.668, -0.307 )
+mass = 0.05
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BrickPart7"]
@@ -238,6 +245,7 @@ shape = SubResource( 14 )
 
 [node name="BrickPart8" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.372, -0.329 )
+mass = 0.05
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BrickPart8"]

@@ -20,7 +20,7 @@ func shoot_ball():
 	var new_ball := ball_object.instance()
 	get_owner().add_child(new_ball)
 	new_ball.global_transform.origin = global_transform.origin
-	new_ball.apply_impulse(Vector3(0, 0, 0), -camera.global_transform.basis.z.normalized() * 250)
+	new_ball.apply_impulse(Vector3(0, 0, 0), -camera.global_transform.basis.z.normalized() * 200)
 
 func shoot_missile():
 	var new_missile := missile_object.instance()
