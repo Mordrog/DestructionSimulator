@@ -1,31 +1,36 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://generate_structurel.gd" type="Script" id=1]
+[ext_resource path="res://Building.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
+[ext_resource path="res://mass_spring_system.gd" type="Script" id=3]
+[ext_resource path="res://Menu.gd" type="Script" id=4]
+[ext_resource path="res://MenuBackground.png" type="Texture" id=5]
+[ext_resource path="res://InGameUI.gd" type="Script" id=6]
+[ext_resource path="res://IconSelected.png" type="Texture" id=7]
+[ext_resource path="res://IconBackgrouind.png" type="Texture" id=8]
+[ext_resource path="res://BallIcon.png" type="Texture" id=9]
+[ext_resource path="res://Icon1.png" type="Texture" id=10]
+[ext_resource path="res://LaserIcon.png" type="Texture" id=11]
+[ext_resource path="res://Icon2.png" type="Texture" id=12]
+[ext_resource path="res://RocketIcon.png" type="Texture" id=13]
+[ext_resource path="res://Icon3.png" type="Texture" id=14]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.282353, 0.996078, 0.894118, 1 )
 
 [sub_resource type="CubeMesh" id=2]
 material = SubResource( 1 )
-size = Vector3( 200, 2, 200 )
+size = Vector3( 2000, 2, 2000 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 100, 1, 100 )
+extents = Vector3( 1000, 1, 1000 )
 
-[sub_resource type="CubeMesh" id=4]
-material = SubResource( 1 )
-size = Vector3( 10, 2, 10 )
-
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 5, 1, 5 )
-
-[sub_resource type="CapsuleShape" id=6]
+[sub_resource type="CapsuleShape" id=4]
 
 [node name="Root" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.19013, 0 )
 
 [node name="Ground" type="StaticBody" parent="."]
-editor/display_folded = true
 
 [node name="MeshInstance" type="MeshInstance" parent="Ground"]
 mesh = SubResource( 2 )
@@ -34,134 +39,314 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 shape = SubResource( 3 )
 
-[node name="Ground3" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 105.565, 10 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Ground3"]
-mesh = SubResource( 4 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Ground3"]
-shape = SubResource( 5 )
-
-[node name="Ground4" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 97.103, 0 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Ground4"]
-mesh = SubResource( 4 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Ground4"]
-shape = SubResource( 5 )
-
-[node name="Ground5" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 83.3044, -10 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Ground5"]
-mesh = SubResource( 4 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Ground5"]
-shape = SubResource( 5 )
-
-[node name="Ground6" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 79.1058, -10 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Ground6"]
-mesh = SubResource( 4 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Ground6"]
-shape = SubResource( 5 )
-
-[node name="Ground7" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6754, 59, -10 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Ground7"]
-mesh = SubResource( 4 )
-material/0 = null
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape" type="CollisionShape" parent="Ground7"]
-shape = SubResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Ground8" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 99.7261, 0 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Ground8"]
-mesh = SubResource( 4 )
-material/0 = null
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape" type="CollisionShape" parent="Ground8"]
-shape = SubResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Ground9" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 62.128, 59, 10 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Ground9"]
-mesh = SubResource( 4 )
-material/0 = null
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape" type="CollisionShape" parent="Ground9"]
-shape = SubResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Ground10" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100.6, 10 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Ground10"]
-mesh = SubResource( 4 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Ground10"]
-shape = SubResource( 5 )
-
-[node name="Structure" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-script = ExtResource( 1 )
-block_size = 10.0
-structure_dimension = Vector3( 3, 7, 3 )
-
-[node name="PointMasses" type="Spatial" parent="Structure"]
-
-[node name="Springs" type="Spatial" parent="Structure"]
+[node name="Building" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+block_size = 5.0
+structure_dimension = Vector3( 3, 8, 3 )
 
 [node name="Player" type="KinematicBody" parent="."]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8866, 26.4368, 0 )
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 26.8737, 26.4368, 0.973417 )
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="Pivot" type="Spatial" parent="Player"]
 
 [node name="Camera" type="Camera" parent="Player/Pivot"]
+far = 1000.0
 
+[node name="SpringSystem" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Menu" type="Control" parent="."]
+anchor_bottom = 1.0
+margin_left = 253.0
+margin_top = 71.0
+margin_right = 784.0
+margin_bottom = -108.0
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+margin_right = 524.0
+margin_bottom = 414.0
+texture = ExtResource( 5 )
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 494.0
+margin_bottom = 414.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/VBoxContainer"]
+margin_right = 464.0
+margin_bottom = 26.0
+custom_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Menu/VBoxContainer/MarginContainer"]
+margin_right = 464.0
+margin_bottom = 16.0
+collapsed = true
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/MarginContainer/HSplitContainer"]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 15.0
+text = "stiffness"
+
+[node name="StiffnessSlider" type="HSlider" parent="Menu/VBoxContainer/MarginContainer/HSplitContainer"]
+margin_left = 66.0
+margin_right = 464.0
+margin_bottom = 16.0
+max_value = 300000.0
+ticks_on_borders = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="Menu/VBoxContainer"]
+margin_top = 30.0
+margin_right = 464.0
+margin_bottom = 56.0
+custom_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Menu/VBoxContainer/MarginContainer2"]
+margin_right = 464.0
+margin_bottom = 16.0
+split_offset = 19
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/MarginContainer2/HSplitContainer"]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 15.0
+text = "break"
+
+[node name="BreakSlider" type="HSlider" parent="Menu/VBoxContainer/MarginContainer2/HSplitContainer"]
+margin_left = 66.0
+margin_right = 464.0
+margin_bottom = 16.0
+min_value = -0.01
+max_value = 10.0
+step = 0.01
+ticks_on_borders = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="Menu/VBoxContainer"]
+margin_top = 60.0
+margin_right = 464.0
+margin_bottom = 86.0
+custom_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Menu/VBoxContainer/MarginContainer3"]
+margin_right = 464.0
+margin_bottom = 16.0
+split_offset = 12
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/MarginContainer3/HSplitContainer"]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 15.0
+text = "gravity"
+
+[node name="GravitySlider" type="HSlider" parent="Menu/VBoxContainer/MarginContainer3/HSplitContainer"]
+margin_left = 66.0
+margin_right = 464.0
+margin_bottom = 16.0
+max_value = 100000.0
+ticks_on_borders = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="Menu/VBoxContainer"]
+margin_top = 90.0
+margin_right = 464.0
+margin_bottom = 116.0
+custom_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Menu/VBoxContainer/MarginContainer4"]
+margin_right = 464.0
+margin_bottom = 16.0
+split_offset = 17
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/MarginContainer4/HSplitContainer"]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 15.0
+text = "frame"
+
+[node name="FrameSlider" type="HSlider" parent="Menu/VBoxContainer/MarginContainer4/HSplitContainer"]
+margin_left = 66.0
+margin_right = 464.0
+margin_bottom = 16.0
+min_value = 1.0
+max_value = 60.0
+value = 1.0
+ticks_on_borders = true
+
+[node name="MarginContainer5" type="MarginContainer" parent="Menu/VBoxContainer"]
+margin_top = 120.0
+margin_right = 464.0
+margin_bottom = 146.0
+custom_constants/margin_right = 0
+custom_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Menu/VBoxContainer/MarginContainer5"]
+margin_right = 464.0
+margin_bottom = 16.0
+split_offset = 5
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/MarginContainer5/HSplitContainer"]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 15.0
+text = "fracture"
+
+[node name="FractureSlider" type="HSlider" parent="Menu/VBoxContainer/MarginContainer5/HSplitContainer"]
+margin_left = 66.0
+margin_right = 464.0
+margin_bottom = 16.0
+min_value = 1.0
+value = 1.0
+ticks_on_borders = true
+
+[node name="MarginContainer6" type="MarginContainer" parent="Menu/VBoxContainer"]
+margin_top = 150.0
+margin_right = 464.0
+margin_bottom = 180.0
+custom_constants/margin_bottom = 10
+
+[node name="ResetBuildingButton" type="Button" parent="Menu/VBoxContainer/MarginContainer6"]
+margin_right = 464.0
+margin_bottom = 20.0
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/MarginContainer6"]
+margin_top = 3.0
+margin_right = 464.0
+margin_bottom = 17.0
+text = "RESET BUILDING"
+align = 1
+valign = 1
+
+[node name="MarginContainer7" type="MarginContainer" parent="Menu/VBoxContainer"]
+margin_top = 184.0
+margin_right = 464.0
+margin_bottom = 364.0
+custom_constants/margin_top = 160
+
+[node name="ExitButton" type="Button" parent="Menu/VBoxContainer/MarginContainer7"]
+margin_top = 160.0
+margin_right = 464.0
+margin_bottom = 180.0
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/MarginContainer7"]
+margin_top = 163.0
+margin_right = 464.0
+margin_bottom = 177.0
+text = "EXIT MENU"
+align = 1
+valign = 1
+
+[node name="InGameUI" type="Control" parent="."]
+editor/display_folded = true
+margin_right = 354.0
+margin_bottom = 69.0
+script = ExtResource( 6 )
+
+[node name="ItemList" type="GridContainer" parent="InGameUI"]
+margin_right = 362.0
+margin_bottom = 70.0
+columns = 3
+
+[node name="Ball" type="CenterContainer" parent="InGameUI/ItemList"]
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="IconSelected" type="TextureRect" parent="InGameUI/ItemList/Ball"]
+visible = false
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 7 )
+
+[node name="IconBackground" type="TextureRect" parent="InGameUI/ItemList/Ball"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 8 )
+
+[node name="Icon" type="TextureRect" parent="InGameUI/ItemList/Ball"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 9 )
+
+[node name="Number" type="TextureRect" parent="InGameUI/ItemList/Ball"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 10 )
+
+[node name="Laser" type="CenterContainer" parent="InGameUI/ItemList"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 64.0
+
+[node name="IconSelected" type="TextureRect" parent="InGameUI/ItemList/Laser"]
+visible = false
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 7 )
+
+[node name="IconBackground" type="TextureRect" parent="InGameUI/ItemList/Laser"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 8 )
+
+[node name="Icon" type="TextureRect" parent="InGameUI/ItemList/Laser"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 11 )
+
+[node name="Number" type="TextureRect" parent="InGameUI/ItemList/Laser"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 12 )
+
+[node name="Rocket" type="CenterContainer" parent="InGameUI/ItemList"]
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 64.0
+
+[node name="IconSelected" type="TextureRect" parent="InGameUI/ItemList/Rocket"]
+visible = false
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 7 )
+
+[node name="IconBackground" type="TextureRect" parent="InGameUI/ItemList/Rocket"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 8 )
+
+[node name="Icon" type="TextureRect" parent="InGameUI/ItemList/Rocket"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 13 )
+
+[node name="Number" type="TextureRect" parent="InGameUI/ItemList/Rocket"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 14 )
+
+[connection signal="value_changed" from="Menu/VBoxContainer/MarginContainer/HSplitContainer/StiffnessSlider" to="Menu" method="_on_StiffnessSlider_value_changed"]
+[connection signal="value_changed" from="Menu/VBoxContainer/MarginContainer2/HSplitContainer/BreakSlider" to="Menu" method="_on_BreakSlider_value_changed"]
+[connection signal="value_changed" from="Menu/VBoxContainer/MarginContainer3/HSplitContainer/GravitySlider" to="Menu" method="_on_GravitySlider_value_changed"]
+[connection signal="value_changed" from="Menu/VBoxContainer/MarginContainer4/HSplitContainer/FrameSlider" to="Menu" method="_on_FrameSlider_value_changed"]
+[connection signal="value_changed" from="Menu/VBoxContainer/MarginContainer5/HSplitContainer/FractureSlider" to="Menu" method="_on_FractureSlider_value_changed"]
+[connection signal="pressed" from="Menu/VBoxContainer/MarginContainer6/ResetBuildingButton" to="Menu" method="_on_ResetBuildingButton_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/MarginContainer7/ExitButton" to="Menu" method="_on_ExitButton_pressed"]

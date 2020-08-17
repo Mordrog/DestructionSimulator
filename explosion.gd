@@ -1,6 +1,7 @@
 extends Area
 
-var timeout = 0.1
+var timeout = 0.05
+var num_of_shatter = 0
 
 func _process(delta: float) -> void:
 	timeout -= delta
@@ -9,4 +10,8 @@ func _process(delta: float) -> void:
 
 func _on_Explosion_body_entered(body: Node) -> void:
 	if body is RigidBody:
-		body.queue_free()
+		if body is PointMass and num_of_shatter <= 0:
+			body.shatter()
+			num_of_shatter += 1
+		else:
+			body.queue_free()

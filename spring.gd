@@ -4,6 +4,10 @@ extends Spatial
 export(NodePath) var from_node:NodePath setget set_from
 export(NodePath) var to_node:NodePath setget set_to
 
+var break_length = 2
+
+var vector_forward = Vector3.FORWARD * 1000
+
 var from:PointMass
 var to:PointMass
 
@@ -26,15 +30,15 @@ func _ready():
 		from = get_node(from_node) as PointMass
 	if !to:
 		to = get_node(to_node) as PointMass
-	from.add_neighbor(to)
-	to.add_neighbor(from)
+	from.add_neighbor(to, break_length)
+	to.add_neighbor(from, break_length)
 
 func _process(delta):
 	if is_instance_valid(from) and is_instance_valid(to):
 		if to.is_node_neighbor(from) and from.is_node_neighbor(to):
 			translation = (from.translation + to.translation)/2
 			if (-to.global_transform.basis.z != Vector3.FORWARD):
-				look_at(to.global_transform.origin, Vector3.FORWARD)
+				look_at(to.global_transform.origin, from.global_transform.origin)
 			var relation_vector := from.translation - to.translation
 			scale.z = relation_vector.length()/2
 		else:
