@@ -1,0 +1,202 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/ui/menu.gd" type="Script" id=1]
+[ext_resource path="res://resources/images/MenuBackground.png" type="Texture" id=2]
+
+
+
+[node name="Menu" type="Control"]
+editor/display_folded = true
+anchor_bottom = 1.0
+margin_left = 253.0
+margin_top = 71.0
+margin_right = 784.0
+margin_bottom = -108.0
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 524.0
+margin_bottom = 414.0
+texture = ExtResource( 2 )
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 494.0
+margin_bottom = 414.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 464.0
+margin_bottom = 26.0
+custom_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MarginContainer"]
+margin_right = 464.0
+margin_bottom = 16.0
+collapsed = true
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HSplitContainer"]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 15.0
+text = "stiffness"
+
+[node name="StiffnessSlider" type="HSlider" parent="VBoxContainer/MarginContainer/HSplitContainer"]
+margin_left = 66.0
+margin_right = 464.0
+margin_bottom = 16.0
+max_value = 200000.0
+ticks_on_borders = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 30.0
+margin_right = 464.0
+margin_bottom = 56.0
+custom_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MarginContainer2"]
+margin_right = 464.0
+margin_bottom = 16.0
+split_offset = 19
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/HSplitContainer"]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 15.0
+text = "break"
+
+[node name="BreakSlider" type="HSlider" parent="VBoxContainer/MarginContainer2/HSplitContainer"]
+margin_left = 66.0
+margin_right = 464.0
+margin_bottom = 16.0
+min_value = -0.01
+max_value = 10.0
+step = 0.01
+ticks_on_borders = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 60.0
+margin_right = 464.0
+margin_bottom = 86.0
+custom_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MarginContainer3"]
+margin_right = 464.0
+margin_bottom = 16.0
+split_offset = 12
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer3/HSplitContainer"]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 15.0
+text = "gravity"
+
+[node name="GravitySlider" type="HSlider" parent="VBoxContainer/MarginContainer3/HSplitContainer"]
+margin_left = 66.0
+margin_right = 464.0
+margin_bottom = 16.0
+max_value = 100000.0
+ticks_on_borders = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 90.0
+margin_right = 464.0
+margin_bottom = 116.0
+custom_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MarginContainer4"]
+margin_right = 464.0
+margin_bottom = 16.0
+split_offset = 17
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer4/HSplitContainer"]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 15.0
+text = "frame"
+
+[node name="FrameSlider" type="HSlider" parent="VBoxContainer/MarginContainer4/HSplitContainer"]
+margin_left = 66.0
+margin_right = 464.0
+margin_bottom = 16.0
+min_value = 1.0
+max_value = 60.0
+value = 1.0
+ticks_on_borders = true
+
+[node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 120.0
+margin_right = 464.0
+margin_bottom = 146.0
+custom_constants/margin_right = 0
+custom_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MarginContainer5"]
+margin_right = 464.0
+margin_bottom = 16.0
+split_offset = 5
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer5/HSplitContainer"]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 15.0
+text = "fracture"
+
+[node name="FractureSlider" type="HSlider" parent="VBoxContainer/MarginContainer5/HSplitContainer"]
+margin_left = 66.0
+margin_right = 464.0
+margin_bottom = 16.0
+min_value = 1.0
+value = 1.0
+ticks_on_borders = true
+
+[node name="MarginContainer6" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 150.0
+margin_right = 464.0
+margin_bottom = 180.0
+custom_constants/margin_bottom = 10
+
+[node name="ResetBuildingButton" type="Button" parent="VBoxContainer/MarginContainer6"]
+margin_right = 464.0
+margin_bottom = 20.0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer6"]
+margin_top = 3.0
+margin_right = 464.0
+margin_bottom = 17.0
+text = "RESET BUILDING"
+align = 1
+valign = 1
+
+[node name="MarginContainer7" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 184.0
+margin_right = 464.0
+margin_bottom = 364.0
+custom_constants/margin_top = 160
+
+[node name="ExitButton" type="Button" parent="VBoxContainer/MarginContainer7"]
+margin_top = 160.0
+margin_right = 464.0
+margin_bottom = 180.0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer7"]
+margin_top = 163.0
+margin_right = 464.0
+margin_bottom = 177.0
+text = "EXIT MENU"
+align = 1
+valign = 1
+
+[connection signal="value_changed" from="VBoxContainer/MarginContainer/HSplitContainer/StiffnessSlider" to="." method="_on_StiffnessSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer2/HSplitContainer/BreakSlider" to="." method="_on_BreakSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer3/HSplitContainer/GravitySlider" to="." method="_on_GravitySlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer4/HSplitContainer/FrameSlider" to="." method="_on_FrameSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer5/HSplitContainer/FractureSlider" to="." method="_on_FractureSlider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer6/ResetBuildingButton" to="." method="_on_ResetBuildingButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer7/ExitButton" to="." method="_on_ExitButton_pressed"]

@@ -10,23 +10,23 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "RigidBody",
-"class": "PointMass",
+"class": "MassPoint",
 "language": "GDScript",
-"path": "res://Node.gd"
+"path": "res://entities/mass_spring_system/mass_point.gd"
 } ]
 _global_script_class_icons={
-"PointMass": ""
+"MassPoint": ""
 }
 
 [application]
 
 config/name="DestructionSimulator"
-run/main_scene="res://DestructionSimulator.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/DestructionSimulator.tscn"
+config/icon="res://resources/images/icon.png"
 
 [autoload]
 
-Global="*res://Global.gd"
+Global="*res://entities/Global.gd"
 
 [input]
 
@@ -88,4 +88,5 @@ item_3={
 
 [rendering]
 
+threads/thread_model=2
 environment/default_environment="res://default_env.tres"

@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://entities/ui/in_simulation_ui.gd" type="Script" id=1]
+[ext_resource path="res://resources/images/IconSelected.png" type="Texture" id=2]
+[ext_resource path="res://resources/images/IconBackgrouind.png" type="Texture" id=3]
+[ext_resource path="res://resources/images/BallIcon.png" type="Texture" id=4]
+[ext_resource path="res://resources/images/Icon1.png" type="Texture" id=5]
+[ext_resource path="res://resources/images/LaserIcon.png" type="Texture" id=6]
+[ext_resource path="res://resources/images/Icon2.png" type="Texture" id=7]
+[ext_resource path="res://resources/images/RocketIcon.png" type="Texture" id=8]
+[ext_resource path="res://resources/images/Icon3.png" type="Texture" id=9]
+
+[node name="InSimulationUI" type="Control"]
+margin_right = 354.0
+margin_bottom = 69.0
+script = ExtResource( 1 )
+
+[node name="ItemList" type="GridContainer" parent="."]
+margin_right = 362.0
+margin_bottom = 70.0
+columns = 3
+
+[node name="Ball" type="CenterContainer" parent="ItemList"]
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="IconSelected" type="TextureRect" parent="ItemList/Ball"]
+visible = false
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 2 )
+
+[node name="IconBackground" type="TextureRect" parent="ItemList/Ball"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+
+[node name="Icon" type="TextureRect" parent="ItemList/Ball"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+
+[node name="Number" type="TextureRect" parent="ItemList/Ball"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="Laser" type="CenterContainer" parent="ItemList"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 64.0
+
+[node name="IconSelected" type="TextureRect" parent="ItemList/Laser"]
+visible = false
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 2 )
+
+[node name="IconBackground" type="TextureRect" parent="ItemList/Laser"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+
+[node name="Icon" type="TextureRect" parent="ItemList/Laser"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 6 )
+
+[node name="Number" type="TextureRect" parent="ItemList/Laser"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 7 )
+
+[node name="Rocket" type="CenterContainer" parent="ItemList"]
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 64.0
+
+[node name="IconSelected" type="TextureRect" parent="ItemList/Rocket"]
+visible = false
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 2 )
+
+[node name="IconBackground" type="TextureRect" parent="ItemList/Rocket"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+
+[node name="Icon" type="TextureRect" parent="ItemList/Rocket"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 8 )
+
+[node name="Number" type="TextureRect" parent="ItemList/Rocket"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 67.0
+margin_right = 202.0
+margin_bottom = 105.0
+text = "Press ESC to open menu"
+align = 1
+valign = 1
+

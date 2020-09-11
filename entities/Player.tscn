@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://entities/player.gd" type="Script" id=1]
+[ext_resource path="res://entities/weapons/Missile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/weapons/Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/weapons/Laser.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.01
+height = 0.01
+
+[node name="Player" type="KinematicBody"]
+transform = Transform( -0.73495, 0, 0.678121, 0, 1, 0, -0.678121, 0, -0.73495, 19.889, 41.282, -20.459 )
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+missile_object = ExtResource( 2 )
+ball_object = ExtResource( 3 )
+laser_object = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Pivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.850793, 0.525501, 0, -0.525501, 0.850793, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="Pivot"]
+far = 1000.0
+
